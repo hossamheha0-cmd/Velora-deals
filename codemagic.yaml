@@ -12,7 +12,6 @@ workflows:
       - name: Build APK
         script: |
           cd VeloraDeals-UAE/mobile-app
-          # تحديث الـ SDK داخل ملفات الـ build.gradle تلقائياً
           sed -i 's/compileSdkVersion 34/compileSdkVersion 35/g' android/app/build.gradle 2>/dev/null || true
           sed -i 's/targetSdkVersion 34/targetSdkVersion 35/g' android/app/build.gradle 2>/dev/null || true
           sed -i 's/compileSdk = 34/compileSdk = 35/g' android/app/build.gradle 2>/dev/null || true
