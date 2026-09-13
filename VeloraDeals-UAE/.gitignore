@@ -1,0 +1,40 @@
+# ===== VeloraDeals UAE — Monorepo .gitignore =====
+# يغطي المشاريع الثلاثة (backend, admin-dashboard, mobile-app). كل مشروع فرعي عنده .gitignore
+# خاص فيه كمان بتفاصيل إضافية - هذا الملف حماية إضافية على مستوى الجذر.
+
+# Node.js (backend + admin-dashboard)
+**/node_modules/
+**/dist/
+**/.next/
+**/build/
+**/*.log
+**/tsconfig.tsbuildinfo
+
+# Environment files - لا تُرفع أبدًا لأي Git repo عام (تحتوي أسرارًا محتملة)
+**/.env
+**/.env.local
+**/.env.*.local
+
+# Flutter / Dart (mobile-app)
+**/.dart_tool/
+**/.flutter-plugins
+**/.flutter-plugins-dependencies
+**/.pub-cache/
+**/.pub/
+mobile-app/android/app/debug/
+mobile-app/android/app/profile/
+mobile-app/android/app/release/
+mobile-app/android/key.properties
+mobile-app/android/local.properties
+mobile-app/ios/Pods/
+mobile-app/ios/.symlinks/
+mobile-app/ios/Flutter/Flutter.framework
+mobile-app/ios/Flutter/Flutter.podspec
+**/google-services.json
+**/GoogleService-Info.plist
+
+# OS / Editor
+.DS_Store
+.vscode/
+.idea/
+*.iml

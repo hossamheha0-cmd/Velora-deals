@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- خلفية شاشة الإقلاع الأساسية (fallback) - الخلفية الفعلية النهائية تُولَّد تلقائيًا بلون
+     العلامة التجارية الداكن عبر: flutter pub run flutter_native_splash:create -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@android:color/black" />
+</layer-list>
