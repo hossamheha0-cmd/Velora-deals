@@ -5,8 +5,8 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 class AppConstants {
   AppConstants._();
 
-  static String get apiBaseUrl =>
-      dotenv.env['API_BASE_URL'] ?? 'http://10.0.2.2:3000/api/v1';
+      String get apiBaseUrl => dotenv.env['API_BASE_URL'] ?? 'https://veloradeals-application.onrender.com/api/v1';
+      
 
   static const String appName = 'VeloraDeals UAE';
   static const String defaultCurrency = 'AED';
