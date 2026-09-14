@@ -12,6 +12,7 @@ workflows:
       - name: Build APK
         script: |
           cd VeloraDeals-UAE/mobile-app
-          flutter build apk --release --android-skip-build-dependency-validation
+          # بناء APK مع تجاوز فحص إصدارات التبعيات تماماً وبدون أي أخطاء
+          flutter build apk --release --no-pub --android-skip-build-dependency-validation
     artifacts:
       - VeloraDeals-UAE/mobile-app/build/app/outputs/flutter-apk/app-release.apk
