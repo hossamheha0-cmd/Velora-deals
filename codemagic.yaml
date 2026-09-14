@@ -12,6 +12,9 @@ workflows:
       - name: Build APK
         script: |
           cd VeloraDeals-UAE/mobile-app
+          # تحديث نسخة الـ Gradle plugin في ملف الـ project build.gradle لو موجودة لتتطابق مع 35
+          find . -name "build.gradle" -type f -exec sed -i 's/com.android.tools.build:gradle:8.3.0/com.android.tools.build:gradle:8.5.0/g' {} +
+          find . -name "build.gradle" -type f -exec sed -i 's/com.android.application/com.android.application/g' {} +
           flutter build apk --release --android-skip-build-dependency-validation
     artifacts:
       - VeloraDeals-UAE/mobile-app/build/app/outputs/flutter-apk/app-release.apk
