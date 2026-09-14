@@ -12,10 +12,11 @@ workflows:
       - name: Build APK
         script: |
           cd VeloraDeals-UAE/mobile-app
-          sed -i 's/compileSdkVersion 34/compileSdkVersion 35/g' android/app/build.gradle 2>/dev/null || true
-          sed -i 's/targetSdkVersion 34/targetSdkVersion 35/g' android/app/build.gradle 2>/dev/null || true
-          sed -i 's/compileSdk = 34/compileSdk = 35/g' android/app/build.gradle 2>/dev/null || true
-          sed -i 's/targetSdk = 34/targetSdk = 35/g' android/app/build.gradle 2>/dev/null || true
+          # تعديل مباشر وجذري لكل ملفات الـ build.gradle في السيرفر لتكون النسخة 35
+          find . -name "build.gradle" -exec sed -i 's/compileSdkVersion 34/compileSdkVersion 35/g' {} +
+          find . -name "build.gradle" -exec sed -i 's/compileSdk = 34/compileSdk = 35/g' {} +
+          find . -name "build.gradle" -exec sed -i 's/targetSdkVersion 34/targetSdkVersion 35/g' {} +
+          find . -name "build.gradle" -exec sed -i 's/targetSdk = 34/targetSdk = 35/g' {} +
           flutter build apk --release --android-skip-build-dependency-validation
     artifacts:
       - VeloraDeals-UAE/mobile-app/build/app/outputs/flutter-apk/app-release.apk
