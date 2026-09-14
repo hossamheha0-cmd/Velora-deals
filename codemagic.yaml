@@ -12,11 +12,6 @@ workflows:
       - name: Build APK
         script: |
           cd VeloraDeals-UAE/mobile-app
-          # تعديل مباشر وجذري لكل ملفات الـ build.gradle في السيرفر لتكون النسخة 35
-          find . -name "build.gradle" -exec sed -i 's/compileSdkVersion 34/compileSdkVersion 35/g' {} +
-          find . -name "build.gradle" -exec sed -i 's/compileSdk = 34/compileSdk = 35/g' {} +
-          find . -name "build.gradle" -exec sed -i 's/targetSdkVersion 34/targetSdkVersion 35/g' {} +
-          find . -name "build.gradle" -exec sed -i 's/targetSdk = 34/targetSdk = 35/g' {} +
           flutter build apk --release --android-skip-build-dependency-validation
     artifacts:
       - VeloraDeals-UAE/mobile-app/build/app/outputs/flutter-apk/app-release.apk
