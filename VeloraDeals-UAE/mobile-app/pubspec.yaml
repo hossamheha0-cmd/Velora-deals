@@ -96,6 +96,3 @@ flutter_native_splash:
   android_12:
     color: "#FFFFFF"
     image: assets/images/velora_logo.png
-
-dependency_overrides:
-  androidx_core: 1.13.0
