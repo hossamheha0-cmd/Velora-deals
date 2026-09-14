@@ -8,12 +8,15 @@ workflows:
       - name: Get flutter packages
         script: |
           cd VeloraDeals-UAE/mobile-app
-          # إضافة تثبيت لإصدار متوافق من الـ core ينهي المشكلة تماماً
-          flutter pub add android_id 2>/dev/null || true
-          flutter pub upgrade
+          flutter pub get
       - name: Build APK
         script: |
           cd VeloraDeals-UAE/mobile-app
+          # إعادة ضبط الـ SDK إلى 34 ليتوافق تماماً مع إصدار الـ AGP 8.3.0 المتاح في السيرفر
+          find . -name "build.gradle" -type f -exec sed -i 's/compileSdkVersion 35/compileSdkVersion 34/g' {} +
+          find . -name "build.gradle" -type f -exec sed -i 's/compileSdk = 35/compileSdk = 34/g' {} +
+          find . -name "build.gradle" -type f -exec sed -i 's/targetSdkVersion 35/targetSdkVersion 34/g' {} +
+          find . -name "build.gradle" -type f -exec sed -i 's/targetSdk = 35/targetSdk = 34/g' {} +
           flutter build apk --release --android-skip-build-dependency-validation
     artifacts:
       - VeloraDeals-UAE/mobile-app/build/app/outputs/flutter-apk/app-release.apk
