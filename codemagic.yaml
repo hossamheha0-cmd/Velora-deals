@@ -9,15 +9,6 @@ workflows:
         script: |
           cd VeloraDeals-UAE/mobile-app
           flutter pub get
-      - name: Force Gradle Wrapper
-        script: |
-          cd VeloraDeals-UAE/mobile-app/android
-          mkdir -p gradle/wrapper
-          echo "distributionBase=GRADLE_USER_HOME" > gradle/wrapper/gradle-wrapper.properties
-          echo "distributionPath=wrapper/dists" >> gradle/wrapper/gradle-wrapper.properties
-          echo "distributionUrl=https\:\/\/services.gradle.org\/distributions\/gradle-8.9-all.zip" >> gradle/wrapper/gradle-wrapper.properties
-          echo "zipStoreBase=GRADLE_USER_HOME" >> gradle/wrapper/gradle-wrapper.properties
-          echo "zipStorePath=wrapper/dists" >> gradle/wrapper/gradle-wrapper.properties
       - name: Build APK
         script: |
           cd VeloraDeals-UAE/mobile-app
