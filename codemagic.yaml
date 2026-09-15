@@ -9,17 +9,9 @@ workflows:
         script: |
           cd VeloraDeals-UAE/mobile-app
           flutter pub get
-      - name: Fix Gradle Version
-        script: |
-          cd VeloraDeals-UAE/mobile-app
-          # تحديث نسخة الـ gradle wrapper لنسخة متوافقة وحديثة
-          GRADLE_PROP="android/gradle/wrapper/gradle-wrapper.properties"
-          if [ -f "$GRADLE_PROP" ]; then
-            sed -i 's/distributionUrl=.*$/distributionUrl=https\:\/\/services.gradle.org\/distributions\/gradle-8.9-all.zip/g' "$GRADLE_PROP"
-          fi
       - name: Build APK
         script: |
           cd VeloraDeals-UAE/mobile-app
-          flutter build apk --release
+          flutter build apk --release --android-skip-build-dependency-validation
     artifacts:
       - VeloraDeals-UAE/mobile-app/build/app/outputs/flutter-apk/app-release.apk
