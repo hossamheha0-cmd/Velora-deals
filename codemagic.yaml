@@ -12,8 +12,8 @@ workflows:
       - name: Build APK
         script: |
           cd VeloraDeals-UAE/mobile-app
-          sed -i 's/compileSdkVersion 35/compileSdkVersion 34/g' android/app/build.gradle
-          sed -i 's/compileSdk = 35/compileSdk = 34/g' android/app/build.gradle
-          flutter build apk --release --android-skip-build-dependency-validation
+          sed -i 's/8.3.0/8.5.0/g' android/build.gradle
+          sed -i 's/com.android.tools.build:gradle:8.3.0/com.android.tools.build:gradle:8.5.0/g' android/build.gradle
+          flutter build apk --release
     artifacts:
       - VeloraDeals-UAE/mobile-app/build/app/outputs/flutter-apk/app-release.apk
