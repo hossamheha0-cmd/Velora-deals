@@ -3,14 +3,14 @@ workflows:
     name: Android Workflow
     max_build_duration: 60
     environment:
-      flutter: stable
+      flutter: 3.24.0
     scripts:
       - name: Get flutter packages
         script: |
           cd VeloraDeals-UAE/mobile-app
           flutter clean
           flutter pub get
-      - name: Build APK Clean
+      - name: Build APK Final
         script: |
           cd VeloraDeals-UAE/mobile-app
           flutter build apk --release --android-skip-build-dependency-validation
