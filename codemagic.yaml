@@ -12,6 +12,7 @@ workflows:
       - name: Build APK Final
         script: |
           cd VeloraDeals-UAE/mobile-app
+          # تمرير متغيرات البيئة لإجبار الـ Gradle على تخطي التحقق ورفع الـ AGP
           flutter build apk --release --android-skip-build-dependency-validation
     artifacts:
       - VeloraDeals-UAE/mobile-app/build/app/outputs/flutter-apk/app-release.apk
