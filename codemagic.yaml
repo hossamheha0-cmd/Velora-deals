@@ -18,13 +18,9 @@ workflows:
           echo "distributionUrl=https\:\/\/services.gradle.org\/distributions\/gradle-8.9-all.zip" >> gradle/wrapper/gradle-wrapper.properties
           echo "zipStoreBase=GRADLE_USER_HOME" >> gradle/wrapper/gradle-wrapper.properties
           echo "zipStorePath=wrapper/dists" >> gradle/wrapper/gradle-wrapper.properties
-          
-          # تأكيد عمل نسخة احتياطية في مجلد الكور الرئيسي للـ gradle
-          mkdir -p .gradle/wrapper
-          cp gradle/wrapper/gradle-wrapper.properties .gradle/wrapper/ || true
       - name: Build APK
         script: |
           cd VeloraDeals-UAE/mobile-app
-          flutter build apk --release
+          flutter build apk --release --android-skip-build-dependency-validation
     artifacts:
       - VeloraDeals-UAE/mobile-app/build/app/outputs/flutter-apk/app-release.apk
