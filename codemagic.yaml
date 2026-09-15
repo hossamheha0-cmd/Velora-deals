@@ -8,8 +8,9 @@ workflows:
       - name: Get flutter packages
         script: |
           cd VeloraDeals-UAE/mobile-app
+          flutter clean
           flutter pub get
-      - name: Build APK
+      - name: Build APK Clean
         script: |
           cd VeloraDeals-UAE/mobile-app
           flutter build apk --release --android-skip-build-dependency-validation
