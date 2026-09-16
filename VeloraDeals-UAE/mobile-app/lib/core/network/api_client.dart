@@ -17,7 +17,7 @@ class ApiClient {
       : _storage = storage ?? SecureStorageService(),
         _dio = Dio(
           BaseOptions(
-            baseUrl: AppConstants.apiBaseUrl,
+            baseUrl: "https://your-backend-url.com/api/",
             connectTimeout: AppConstants.connectTimeout,
             receiveTimeout: AppConstants.receiveTimeout,
             headers: {'Content-Type': 'application/json'},
