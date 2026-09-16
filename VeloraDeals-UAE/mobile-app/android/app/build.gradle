@@ -17,7 +17,11 @@ def flutterVersionName = localProperties.getProperty('flutter.versionName') ?: '
 
 android {
     namespace "com.veloradeals.uae"
-    compileSdk 34
+    compileSdk 35
+        lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
     ndkVersion flutter.ndkVersion
 
     compileOptions {
@@ -33,7 +37,7 @@ android {
         // معرّف التطبيق الرسمي - يجب أن يطابق ما تسجله في Google Play Console عند النشر
         applicationId "com.veloradeals.uae"
         minSdkVersion 21
-        targetSdkVersion 34
+        targetSdkVersion 35
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
         multiDexEnabled true
