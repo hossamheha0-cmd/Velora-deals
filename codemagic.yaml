@@ -8,16 +8,19 @@ workflows:
       cocoapods: default
     scripts:
       - name: Get Flutter packages
+        working_directory: VeloraDeals-UAE
         script: |
           flutter pub get
       - name: Build Android APK and AppBundle
+        working_directory: VeloraDeals-UAE
         script: |
           flutter build apk --release --android-skip-build-dependency-validation
           flutter build appbundle --release --android-skip-build-dependency-validation
       - name: Build iOS IPA
+        working_directory: VeloraDeals-UAE
         script: |
           flutter build ipa --release --no-codesign
     artifacts:
-      - build/**/outputs/**/*.apk
-      - build/**/outputs/**/*.aab
-      - build/ios/ipa/*.ipa
+      - VeloraDeals-UAE/build/**/outputs/**/*.apk
+      - VeloraDeals-UAE/build/**/outputs/**/*.aab
+      - VeloraDeals-UAE/build/ios/ipa/*.ipa
