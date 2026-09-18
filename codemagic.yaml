@@ -9,10 +9,29 @@ workflows:
         script: |
           cd VeloraDeals-UAE/mobile-app
           flutter pub get
-      - name: Build APK Final
+      - name: Build APK and AppBundle
         script: |
           cd VeloraDeals-UAE/mobile-app
-          # تمرير متغيرات البيئة لإجبار الـ Gradle على تخطي التحقق ورفع الـ AGP
-          flutter build apk --release --android-skip-build-dependency-validation
+          flutter build apk --release
+          flutter build appbundle --release
     artifacts:
-      - VeloraDeals-UAE/mobile-app/build/app/outputs/flutter-apk/app-release.apk
+      - VeloraDeals-UAE/mobile-app/build/app/outputs/flutter-apk/*.apk
+      - VeloraDeals-UAE/mobile-app/build/app/outputs/bundle/release/*.aab
+
+  ios-workflow:
+    name: iOS Workflow
+    max_build_duration: 60
+    environment:
+      flutter: stable
+      xcode: latest
+    scripts:
+      - name: Get flutter packages
+        script: |
+          cd VeloraDeals-UAE/mobile-app
+          flutter pub get
+      - name: Build iOS IPA
+        script: |
+          cd VeloraDeals-UAE/mobile-app
+          flutter build ipa --release --no-codesign
+    artifacts:
+      - VeloraDeals-UAE/mobile-app/build/ios/ipa/*.ipa
