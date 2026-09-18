@@ -1,37 +1,23 @@
 workflows:
-  android-workflow:
-    name: Android Workflow
-    max_build_duration: 60
-    environment:
-      flutter: stable
-    scripts:
-      - name: Get flutter packages
-        script: |
-          cd VeloraDeals-UAE/mobile-app
-          flutter pub get
-      - name: Build APK and AppBundle
-        script: |
-          cd VeloraDeals-UAE/mobile-app
-          flutter build apk --release
-          flutter build appbundle --release
-    artifacts:
-      - VeloraDeals-UAE/mobile-app/build/app/outputs/flutter-apk/*.apk
-      - VeloraDeals-UAE/mobile-app/build/app/outputs/bundle/release/*.aab
-
-  ios-workflow:
-    name: iOS Workflow
-    max_build_duration: 60
+  release-workflow:
+    name: Release Workflow (Android & iOS)
+    max_build_duration: 120
     environment:
       flutter: stable
       xcode: latest
+      cocoapods: default
     scripts:
-      - name: Get flutter packages
+      - name: Get Flutter packages
         script: |
-          cd VeloraDeals-UAE/mobile-app
           flutter pub get
+      - name: Build Android APK and AppBundle
+        script: |
+          flutter build apk --release --android-skip-build-dependency-validation
+          flutter build appbundle --release --android-skip-build-dependency-validation
       - name: Build iOS IPA
         script: |
-          cd VeloraDeals-UAE/mobile-app
           flutter build ipa --release --no-codesign
     artifacts:
-      - VeloraDeals-UAE/mobile-app/build/ios/ipa/*.ipa
+      - build/**/outputs/**/*.apk
+      - build/**/outputs/**/*.aab
+      - build/ios/ipa/*.ipa
