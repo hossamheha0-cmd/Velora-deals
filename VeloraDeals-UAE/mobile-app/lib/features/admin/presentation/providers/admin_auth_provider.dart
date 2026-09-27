@@ -56,8 +56,8 @@ class AdminAuthNotifier extends StateNotifier<AdminAuthState> {
       final result = await _repository.login(email: email, password: password);
       state = state.copyWith(status: AdminAuthStatus.authenticated, admin: result.admin, isLoading: false);
       return true;
-    } on ApiException catch (e) {
-      state = state.copyWith(isLoading: false, errorMessage: e.message);
+    } catch (e) {
+      state = state.copyWith(isLoading: false, errorMessage: e.toString());
       return false;
     }
   }
