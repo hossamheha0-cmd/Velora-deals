@@ -75,8 +75,8 @@ class AuthNotifier extends StateNotifier<AuthState> {
       final seconds = await _repository.requestOtp(phoneNumber);
       state = state.copyWith(isLoading: false);
       return seconds;
-    } on ApiException catch (e) {
-      state = state.copyWith(isLoading: false, errorMessage: e.message);
+    } catch (e) {
+      state = state.copyWith(isLoading: false, errorMessage: e.toString());
       return null;
     }
   }
@@ -92,8 +92,8 @@ class AuthNotifier extends StateNotifier<AuthState> {
       final user = await _repository.getCurrentUser();
       state = state.copyWith(status: AuthStatus.authenticated, user: user, isLoading: false);
       return true;
-    } on ApiException catch (e) {
-      state = state.copyWith(isLoading: false, errorMessage: e.message);
+    } catch (e) {
+      state = state.copyWith(isLoading: false, errorMessage: e.toString());
       return false;
     }
   }
